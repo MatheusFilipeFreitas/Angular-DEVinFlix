@@ -1,1 +1,47 @@
-<p>serie works!</p>
+<div class="serie-container">
+  <div class="container">
+    <img width="500" [src]="serie.poster" alt="">
+    <h2>{{ serie.name }}</h2>
+    <p>{{ serie.description }}</p>
+  </div>
+
+  <div class="accordion" id="accordionExample"><!--ngfor loop started for dynamic data -->
+    <div class="accordion-item" *ngFor="let temp of numTemp; let i = index">
+      <h2 class="accordion-header" [id]="'heading'+i">
+
+        <button class="accordion-button" [ngClass]="{ 'collapsed': i != 0 }" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse'+i" aria-expanded="true" [attr.aria-controls]="'collapse'+i">
+          Temporada {{i + 1}}
+        </button>
+      </h2>
+      <div [id]="'collapse'+i" class="accordion-collapse collapse" [ngClass]="{ 'show': i == 0 }" [attr.aria-labelledby]="'heading'+i" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <ul>
+            <li>
+              <a href="#">Episodio 1</a>
+            </li>
+            <li>
+              <a href="#">Episodio 2</a>
+            </li>
+            <li>
+              <a href="#">Episodio 3</a>
+            </li>
+            <li>
+              <a href="#">Episodio 4</a>
+            </li>
+            <li>
+              <a href="#">Episodio 5</a>
+            </li>
+            <li>
+              <a href="#">Episodio 6</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+</div>
+
+
