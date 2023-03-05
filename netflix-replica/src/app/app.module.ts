@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,6 +11,8 @@ import { CardComponent } from './components/card/card.component';
 import { SerieComponent } from './pages/serie/serie.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './pages/login/login.component';
+import { WithMenuComponent } from './layout/with-menu/with-menu.component';
+import { AuthguardGuard } from './security/guard/authguard.guard';
 
 @NgModule({
   declarations: [
@@ -16,13 +21,17 @@ import { LoginComponent } from './pages/login/login.component';
     CardComponent,
     SerieComponent,
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
+    WithMenuComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AuthguardGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,1 +1,9 @@
-<p>login works!</p>
+<form [formGroup]="formUser">
+  <input type="email" id="user-email" formControlName="email" required>
+  <input type="password" id="user-password" formControlName="senha" required>
+  <button (click)="onSubmit()">Submit</button>
+</form>
+
+<!-- <input [(ngModel)]="emailUser" type="email" id="user-email">
+<input [(ngModel)]="senhaUser" type="password" id="user-password">
+<button (click)="onSubmit()">Submit</button> -->
