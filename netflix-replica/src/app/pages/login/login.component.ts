@@ -30,9 +30,20 @@ export class LoginComponent implements OnInit {
 
   createForm(user: User) {
     this.formUser = new FormGroup({
-      email: new FormControl(user.email),
+      email: new FormControl(user.email, [
+        Validators.required,
+        Validators.minLength(4)
+      ]),
       senha: new FormControl(user.password)
     })
+  }
+
+  get email() {
+    return this.formUser.get('email')!;
+  }
+
+  get senha() {
+    return this.formUser.get('senha')!;
   }
 
   createLocalStorage(booleanValue: boolean) {
@@ -45,34 +56,53 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  findUser(form: FormGroup) {
-    // console.log(this.formUser.value.email);
+  findUser() {
     this.listUsers.find((user) => {
-      if(user.email === form.value.email) {
+      if(user.email === this.email.value) {
         this.user = user;
       }
     });
 
-  }
-
-  correctPassword(form: FormGroup, user: User) {
-    if(user.password === form.value.senha) {
+    if(this.user.email === undefined && this.email.value === null) {
+      this.email.setErrors({'required': true});
+      this.email.markAsTouched();
+      return false;
+    }else if(this.user.email === undefined && this.email.value != null) {
+      this.email.setErrors({'invalid': true});
+      this.email.markAsTouched();
+      return false;
+    }else{
       return true;
     }
+  }
+
+  correctPassword() {
+    if(this.senha.value === null) {
+      this.senha.setErrors({'required': true});
+      this.senha.markAsTouched();
+    }else{
+      if(this.user.password === this.senha.value) {
+        return true;
+      }else{
+        this.senha.setErrors({'invalid': true});
+        this.senha.markAsTouched();
+        return false;
+      }
+    }
     return false;
+
   }
 
   onSubmit() {
-    // console.log(this.formUser.value);
-    this.findUser(this.formUser);
-    // console.log(this.user);
-    if(this.correctPassword(this.formUser, this.user)) {
-      this.createLocalStorage(true);
-      this.router.navigate(['/']);
+    if(this.findUser()){
+      if(this.correctPassword()) {
+        this.createLocalStorage(true);
+        this.router.navigate(['/']);
+      }else{
+        this.createLocalStorage(false);
+      }
     }else{
-      alert('password incorrect');
       this.createLocalStorage(false);
     }
   }
-
 }

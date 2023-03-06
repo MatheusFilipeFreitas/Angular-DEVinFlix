@@ -1,0 +1,21 @@
+<div class="serie">
+  <h3>{{ gender }}</h3>
+  <div class="container-fluid">
+    <div class="slider-wrap">
+      <div class="slider-main">
+        <div *ngFor="let serie of serieGenders" class="item">
+          <app-card [serie]="serie"></app-card>
+        </div>
+      </div>
+      <div class="button-area">
+        <button class="prev" appPrev>
+          <i class='bx bx-chevron-left'></i>
+        </button>
+        <button class="next" appNext>
+          <i class='bx bx-chevron-right'></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+

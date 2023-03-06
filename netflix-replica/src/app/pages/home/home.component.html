@@ -1,9 +1,5 @@
 <div class="gallery">
-  <div class="container">
-    <div class="row">
-      <app-card *ngFor="let serie of series" [serie]="serie"></app-card>
-    </div>
+  <div *ngFor="let gender of genders" class="row">
+    <app-category [series]="series" [gender]="gender"></app-category>
   </div>
 </div>
-
-

@@ -13,6 +13,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './pages/login/login.component';
 import { WithMenuComponent } from './layout/with-menu/with-menu.component';
 import { AuthguardGuard } from './security/guard/authguard.guard';
+import { CategoryComponent } from './components/category/category.component';
+import { NextDirective } from './directives/next.directive';
+import { PrevDirective } from './directives/prev.directive';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { AuthguardGuard } from './security/guard/authguard.guard';
     SerieComponent,
     HeaderComponent,
     LoginComponent,
-    WithMenuComponent
+    WithMenuComponent,
+    CategoryComponent,
+    NextDirective,
+    PrevDirective
   ],
   imports: [
     BrowserModule,

@@ -1,10 +1,6 @@
-
-<div (click)="navigateToSerie(serie.id)" (mouseover)="show = true" (mouseout)="show = false" [ngClass]="show ? 'bigger' : 'normal'" class="card">
-  <img width="200" [src]="serie.poster" alt="serie-img">
-  <div [ngClass]="show ? 'show-card' : 'hidden-card'">
-    <h4 class="titulo">{{ serie.name }}</h4>
-    <p>{{ serie.description }}</p>
-  </div>
+<div [ngStyle]="{backgroundImage:'url('+ serie.poster +')'}" (click)="navigateToSerie(serie.id)" (mouseover)="show = true" (mouseout)="show = false" [ngClass]="show ? 'bigger' : 'normal'" class="card-container">
+  <h4 [ngClass]="show ? 'show-card' : 'hidden-card'" class="titulo">{{ serie.name }}</h4>
 </div>
+
 
 
