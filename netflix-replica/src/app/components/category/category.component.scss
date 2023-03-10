@@ -43,6 +43,8 @@ h3 {
   color: rgba(255, 255, 255, 0.636);
   border: none;
   transition: all 0.5s ease;
+  position: absolute;
+  z-index: 1000;
 }
 
 .prev i, .next i {
@@ -56,14 +58,10 @@ h3 {
 }
 
 .prev {
-  position: absolute;
-  z-index: 1000;
   background: linear-gradient(90deg, rgba(0, 0, 0, 0.518), rgba(8, 8, 8, 0));
 }
 
 .next {
-  position: absolute;
-  z-index: 1000;
   right: -50px;
   background: linear-gradient(90deg, rgba(8, 8, 8, 0), rgba(0, 0, 0, 0.518));
 }
